@@ -1,0 +1,22 @@
+# Weibo Risk Perception System - Minimal Dependencies
+# Most packages should already be installed in jikong_sentiment env
+
+# These are likely already installed:
+# pandas, numpy, scipy, jieba, snownlp
+# torch, transformers, scikit-learn, xgboost, lightgbm
+# networkx, requests, beautifulsoup4, lxml, matplotlib
+
+# Additional packages needed (install manually if pip fails):
+# conda install -c conda-forge plotly dash loguru pyyaml flask tqdm
+
+plotly
+dash
+dash-bootstrap-components
+loguru
+pyyaml
+flask
+flask-cors
+tqdm
+python-dateutil
+jinja2
+

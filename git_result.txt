@@ -1,0 +1,104 @@
+
+>>> git config --global --add safe.directory 'H:/基于微博数据的社会风险感知与舆情预测系统'
+Return code: 0
+
+>>> git config --global --add safe.directory H:/基于微博数据的社会风险感知与舆情预测系统
+Return code: 0
+
+>>> git init
+STDOUT: Reinitialized existing Git repository in H:/基于微博数据的社会风险感知与舆情预测系统/.git/
+
+Return code: 0
+
+>>> git remote -v
+Return code: 0
+
+>>> git remote add origin https://github.com/lr0326/weibo-risk-perception.git
+Return code: 0
+
+>>> git add .
+STDERR: warning: in the working copy of 'README.md', LF will be replaced by CRLF the next time Git touches it
+
+Return code: 0
+
+>>> git status --short
+STDOUT: A  .gitignore
+A  README.md
+A  config/api_config.yaml.template
+A  config/config.yaml
+A  data/dictionaries/.gitkeep
+A  data/dictionaries/stop_words.txt
+A  data/dictionaries/user_dict.txt
+A  data/models/.gitkeep
+A  data/outputs/.gitkeep
+A  data/processed/.gitkeep
+A  data/raw/.gitkeep
+A  examples/basic_usage.py
+A  git_push.py
+A  git_result.txt
+A  main.py
+A  quick_test.py
+A  requirements.txt
+A  requirements_minimal.txt
+A  scripts/run_analysis.py
+A  scripts/run_collection.py
+A  scripts/run_dashboard.py
+A  setup.py
+A  src/__init__.py
+A  src/analysis/__init__.py
+A  src/analysis/network_analysis.py
+A  src/analysis/risk_perception.py
+A  src/analysis/sentiment_analyzer.py
+A  src/data_collection/__init__.py
+A  src/data_collection/stream_collector.py
+A  src/data_collection/weibo_collector.py
+A  src/models/__init__.py
+A  src/models/clustering.py
+A  src/models/prediction_model.py
+A  src/models/risk_model.py
+A  src/pipeline.py
+A  src/preprocessing/__init__.py
+A  src/preprocessing/feature_extractor.py
+A  src/preprocessing/text_cleaner.py
+A  src/utils/__init__.py
+A  src/utils/database.py
+A  src/utils/helpers.py
+A  src/utils/logger.py
+A  src/visualization/__init__.py
+A  src/visualization/dashboard.py
+A  src/visualization/report_generator.py
+A  test_result.txt
+A  test_viz.py
+A  test_viz_result.txt
+A  tests/__init__.py
+A  tests/test_collector.py
+A  tests/test_models.py
+A  tests/test_preprocessor.py
+
+Return code: 0
+
+>>> git commit -m "Initial commit: 基于微博数据的社会风险感知与舆情预测系统"
+STDERR: Author identity unknown
+
+*** Please tell me who you are.
+
+Run
+
+  git config --global user.email "you@example.com"
+  git config --global user.name "Your Name"
+
+to set your account's default identity.
+Omit --global to set the identity only in this repository.
+
+fatal: unable to auto-detect email address (got 'A@DESKTOP-TVSMSOB.(none)')
+
+Return code: 128
+
+>>> git branch -M main
+Return code: 0
+
+>>> git push -u origin main
+STDERR: error: src refspec main does not match any
+error: failed to push some refs to 'https://github.com/lr0326/weibo-risk-perception.git'
+
+Return code: 1

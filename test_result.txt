@@ -1,0 +1,7 @@
+开始测试包导入...
+✓ dash 版本: 3.3.0
+✓ plotly 版本: 6.5.0
+✓ loguru 导入成功
+✓ dash_bootstrap_components 版本: 1.6.0
+
+测试完成!

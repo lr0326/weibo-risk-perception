@@ -1,0 +1,18 @@
+# 微博API配置模板
+# 请复制此文件为 api_config.yaml 并填入您的API信息
+
+weibo:
+  # 微博开放平台 - https://open.weibo.com/
+  app_key: "YOUR_APP_KEY"
+  app_secret: "YOUR_APP_SECRET"
+  access_token: "YOUR_ACCESS_TOKEN"
+  redirect_uri: "https://api.weibo.com/oauth2/default.html"
+
+# 备用数据源配置 (可选)
+backup_sources:
+  # 如需使用第三方情感分析API
+  sentiment_api:
+    provider: ""  # baidu, tencent, aliyun
+    api_key: ""
+    secret_key: ""
+

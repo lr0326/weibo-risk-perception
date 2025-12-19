@@ -1,0 +1,176 @@
+# 基于微博数据的社会风险感知与舆情预测系统 - 配置文件
+
+# ==================== 系统配置 ====================
+system:
+  name: "微博舆情风险感知系统"
+  version: "1.0.0"
+  debug: false
+  log_level: "INFO"
+
+# ==================== 数据采集配置 ====================
+data_collection:
+  # 微博API配置
+  weibo_api:
+    base_url: "https://api.weibo.com/2/"
+    rate_limit: 150  # 每小时请求限制
+    retry_times: 3
+    retry_delay: 5  # 秒
+
+  # 爬虫配置
+  crawler:
+    batch_size: 100
+    max_pages: 50
+    sleep_interval: 1.0  # 请求间隔(秒)
+    timeout: 30
+    max_retries: 3
+
+  # 流式采集配置
+  stream:
+    enabled: false
+    buffer_size: 1000
+    flush_interval: 60  # 秒
+
+# ==================== 数据预处理配置 ====================
+preprocessing:
+  # 文本清洗
+  text_cleaning:
+    remove_urls: true
+    remove_mentions: true
+    remove_hashtags: false
+    remove_emojis: false
+    remove_punctuation: false
+    convert_lowercase: false
+    min_length: 5
+
+  # 分词配置
+  tokenization:
+    engine: "jieba"  # jieba, pkuseg, hanlp
+    user_dict: "data/dictionaries/user_dict.txt"
+    stop_words: "data/dictionaries/stop_words.txt"
+
+  # 特征提取
+  feature_extraction:
+    tfidf:
+      max_features: 5000
+      ngram_range: [1, 2]
+    word2vec:
+      vector_size: 100
+      window: 5
+      min_count: 2
+
+# ==================== 模型配置 ====================
+models:
+  # 情感分析模型
+  sentiment:
+    model_type: "bert"  # bert, lstm, textcnn, snownlp
+    model_name: "bert-base-chinese"
+    max_length: 128
+    batch_size: 32
+    num_labels: 3  # 正面、中性、负面
+
+  # LSTM预测模型
+  lstm:
+    hidden_dim: 128
+    num_layers: 2
+    dropout: 0.2
+    sequence_length: 24
+    learning_rate: 0.001
+    epochs: 100
+    early_stopping_patience: 10
+
+  # 聚类模型
+  clustering:
+    algorithm: "kmeans"  # kmeans, dbscan, hierarchical
+    n_clusters: 5
+    random_state: 42
+
+  # 风险感知模型
+  risk_perception:
+    dimensions:
+      - "health_risk"
+      - "economic_risk"
+      - "social_risk"
+      - "political_risk"
+    weights:
+      health_risk: 0.35
+      economic_risk: 0.25
+      social_risk: 0.25
+      political_risk: 0.15
+
+# ==================== 预警配置 ====================
+warning:
+  # 预警阈值
+  thresholds:
+    risk_score:
+      low: 30
+      medium: 50
+      high: 70
+      critical: 85
+
+    emotion:
+      fear: 0.6
+      anger: 0.5
+      sadness: 0.5
+
+    volume:
+      spike_multiplier: 3.0  # 相对于基线的倍数
+
+  # 预警规则
+  rules:
+    enable_composite: true  # 启用复合规则
+    composite_threshold: 2  # 触发复合预警的条件数
+
+  # 通知配置
+  notification:
+    email:
+      enabled: false
+      smtp_server: ""
+      recipients: []
+    webhook:
+      enabled: false
+      url: ""
+
+# ==================== 可视化配置 ====================
+visualization:
+  dashboard:
+    host: "0.0.0.0"
+    port: 8050
+    debug: false
+    update_interval: 300  # 秒
+
+  charts:
+    default_colors: ["#1f77b4", "#ff7f0e", "#2ca02c", "#d62728", "#9467bd"]
+    font_family: "Microsoft YaHei"
+
+  reports:
+    output_format: "html"  # html, pdf, markdown
+    template: "default"
+
+# ==================== 数据库配置 ====================
+database:
+  # MongoDB配置
+  mongodb:
+    host: "localhost"
+    port: 27017
+    database: "weibo_risk"
+    username: ""
+    password: ""
+
+  # Redis配置
+  redis:
+    host: "localhost"
+    port: 6379
+    db: 0
+    password: ""
+
+# ==================== 路径配置 ====================
+paths:
+  data:
+    raw: "data/raw"
+    processed: "data/processed"
+    models: "data/models"
+    outputs: "data/outputs"
+    dictionaries: "data/dictionaries"
+  logs: "logs"
+  cache: ".cache"
+
