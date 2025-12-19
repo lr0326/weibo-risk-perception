@@ -1,8 +1,0 @@
-✓ Dashboard 模块导入成功
-✓ Dashboard 初始化成功
-  - 端口: 8050
-  - 主机: 0.0.0.0
-✓ ReportGenerator 模块导入成功
-✓ ReportGenerator 初始化成功
-
-测试完成!
