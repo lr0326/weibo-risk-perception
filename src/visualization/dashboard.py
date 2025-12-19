@@ -581,7 +581,7 @@ class Dashboard:
             debug = self.debug
 
         logger.info(f"启动仪表盘: http://{host}:{port}")
-        self.app.run_server(host=host, port=port, debug=debug)
+        self.app.run(host=host, port=port, debug=debug)
 
 
 if __name__ == "__main__":
